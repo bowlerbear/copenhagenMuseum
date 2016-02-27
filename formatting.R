@@ -42,7 +42,7 @@ beetlesSN<-ddply(beetles,.(Year),summarise,nuSpecies=length(unique(Species[Count
 
 library(ggplot2)
 qplot(Year,nuSpecies,data=beetlesSN,geom=c("point","line"))+theme_bw()
-#variable but perhaps increasing
+#variable but increasing
 
 ################################################################################
 
@@ -50,7 +50,7 @@ qplot(Year,nuSpecies,data=beetlesSN,geom=c("point","line"))+theme_bw()
 beetlesTC<-ddply(beetles,.(Year),summarise,totCount=sum(Count))
 
 qplot(Year,totCount,data=beetlesTC,geom=c("point","line"))+theme_bw()
-#variable - large peak 2006
+#variable
 
 ################################################################################
 
