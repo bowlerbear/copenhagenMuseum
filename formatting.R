@@ -24,7 +24,7 @@ names(datafile)[which(names(datafile)=="individuals")]<-"Count"
 beetles<-subset(datafile,order=="COLEOPTERA")
 
 #like paper exclude 1992 and 2009 data
-beetles<-subset(datafile,Year!=1992&Year!=2009)
+beetles<-subset(beetles,Year!=1992&Year!=2009)
 
 #How often is there any data on any species
 #surveys<-unique(datafile[,c("year","date1","date2")])
