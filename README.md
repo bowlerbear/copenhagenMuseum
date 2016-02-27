@@ -8,4 +8,4 @@ DOI http://dx.doi.org/10.5061/dryad.s4945/1
 
 The data file contains the raw data from the light trapping study ordered by: order (Lepidoptera/Coleoptera), family, name (species), year, date1 (start), date2 (end) and no. individuals
 
-The data file was downloaded on the 27th Feb 2015.
+The data file was downloaded on the 27th Feb 2016.
