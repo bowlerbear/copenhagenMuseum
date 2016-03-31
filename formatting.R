@@ -91,4 +91,26 @@ ggplot(beetlesCS)+geom_line(aes(x=Year,y=Value,colour=Index))+theme_bw()
 
 #adding in pop trends
 
+#first restrict data set to species seen in 25% of years
+beetlesSummary<-ddply(beetles,.(Species),summarise,nuYears=length(unique(Year[Count!=0])),meanAbund=mean(Count,na.rm=T))
+
+#how often were most beetles seen
+hist(beetlesSummary$nuYears)
+#usually in just a few years
+
+#cal pop trends for species seen in 50% of years
+length(unique(beetles$Year))#16
+beetlesR<-subset(beetles,Species%in%beetlesSummary$Species[beetlesSummary$nuYears>8])
+beetlesTrends<-ddply(beetlesR,.(Species), function(x){
+  summary(lm(Count~Year,data=x))$coef[2,]
+  })
+
+#merge with mean abundance data
+beetlesTrends<-merge(beetlesTrends,beetlesSummary,by="Species")
+
+#is there a relationship between trend and mean pop siye
+qplot(log(meanAbund),Estimate,data=beetlesTrends,geom=c("point"))+theme_bw()
+#more abundance species more likely to be increasing....
+
 ###############################################################################
+
