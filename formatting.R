@@ -88,3 +88,7 @@ ggplot(beetlesCS)+geom_line(aes(x=Year,y=Value,colour=Index))+theme_bw()
 #why a flat line at 1995 and 1996????? Problem with code or data????
 
 ################################################################################
+
+#adding in pop trends
+
+###############################################################################
