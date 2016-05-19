@@ -25,3 +25,13 @@ beetles<-subset(datafile,order=="COLEOPTERA")
 
 #like paper exclude 1992 and 2009 data
 beetles<-subset(beetles,Year!=1992&Year!=2009)
+
+#for the moment just consider annual totals
+library(plyr)
+beetles<-ddply(beetles,.(Species,Year),summarise,Count=sum(Count),.drop=FALSE)
+
+#Plotting species number
+beetlesSN<-ddply(beetles,.(Year),summarise,nuSpecies=length(unique(Species[Count!=0])))
+
+library(ggplot2)
+qplot(Year,nuSpecies,data=beetlesSN,geom=c("point","line"))+theme_bw()
