@@ -35,3 +35,8 @@ beetlesSN<-ddply(beetles,.(Year),summarise,nuSpecies=length(unique(Species[Count
 
 library(ggplot2)
 qplot(Year,nuSpecies,data=beetlesSN,geom=c("point","line"))+theme_bw()
+
+#Plotting total abundance
+beetlesTC<-ddply(beetles,.(Year),summarise,totCount=sum(Count))
+
+qplot(Year,totCount,data=beetlesTC,geom=c("point","line"))+theme_bw()
