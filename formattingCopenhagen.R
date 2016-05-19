@@ -8,3 +8,11 @@ datafile$Species<-sapply(namessplit,function(x)paste(x[1],x[2],sep=" "))
 #correct mistakes
 datafile$Species[which(datafile$Species=="Prays f.")]<-"Prays ruficeps"
 datafile$Species[which(datafile$Species=="Euxoa 'tritici'")]<-"Euxoa tritici"
+
+#format time data
+library(lubridate)
+datafile$date1<-as.Date(datafile$date1,format="%m/%d/%y")
+datafile$date2<-as.Date(datafile$date2,format="%m/%d/%y")
+datafile$Year<-year(datafile$date1)
+datafile$yDay<-yday(datafile$date1)
+datafile$Month<-month(datafile$date1)
