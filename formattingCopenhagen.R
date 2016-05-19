@@ -16,3 +16,12 @@ datafile$date2<-as.Date(datafile$date2,format="%m/%d/%y")
 datafile$Year<-year(datafile$date1)
 datafile$yDay<-yday(datafile$date1)
 datafile$Month<-month(datafile$date1)
+
+#give the count data a nicer name
+names(datafile)[which(names(datafile)=="individuals")]<-"Count"
+
+#just begin with look at beetles
+beetles<-subset(datafile,order=="COLEOPTERA")
+
+#like paper exclude 1992 and 2009 data
+beetles<-subset(beetles,Year!=1992&Year!=2009)
